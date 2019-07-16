@@ -37,6 +37,9 @@ pub struct Options {
     pub inner: rocksdb_ffi::DBOptions,
 }
 
+unsafe impl Sync for Options {}
+unsafe impl Send for Options {}
+
 pub struct WriteOptions {
     pub inner: rocksdb_ffi::DBWriteOptions,
 }
