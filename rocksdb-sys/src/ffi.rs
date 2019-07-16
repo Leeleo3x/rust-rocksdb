@@ -193,7 +193,7 @@ extern "C" {
                                                         v: c_int);
     pub fn rocksdb_options_set_prefix_extractor(options: DBOptions,
                                                 slice_transform: DBSliceTransform);
-    pub fn rocksdb_options_statistics_get_string(options: DBOptions) -> CStr;
+    pub fn rocksdb_options_statistics_get_string(options: DBOptions) -> *const c_char;
     pub fn rocksdb_options_enable_statistics(options: DBOptions);
     pub fn rocksdb_filterpolicy_create_bloom(bits_per_key: c_int)
                                              -> DBFilterPolicy;

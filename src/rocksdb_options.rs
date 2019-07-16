@@ -15,6 +15,7 @@
 extern crate libc;
 use self::libc::{c_int, size_t};
 use std::ffi::CString;
+use std::ffi::CStr;
 use std::mem;
 
 use rocksdb_ffi;
@@ -317,6 +318,18 @@ impl Options {
         unsafe {
             rocksdb_ffi::rocksdb_options_set_level0_stop_writes_trigger(
                 self.inner, n);
+        }
+    }
+
+    pub fn get_statistics_string(&mut self) -> &CStr {
+        unsafe {
+            return CStr::from_ptr(rocksdb_ffi::rocksdb_options_statistics_get_string(self.inner));
+        }
+    }
+
+    pub fn enable_statistics(&mut self) {
+        unsafe  {
+            rocksdb_ffi::rocksdb_options_enable_statistics(self.inner);
         }
     }
 
