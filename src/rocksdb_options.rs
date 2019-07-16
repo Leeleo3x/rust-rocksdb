@@ -321,7 +321,7 @@ impl Options {
         }
     }
 
-    pub fn get_statistics_string(&mut self) -> &CStr {
+    pub fn get_statistics_string(&self) -> &CStr {
         unsafe {
             return CStr::from_ptr(rocksdb_ffi::rocksdb_options_statistics_get_string(self.inner));
         }
